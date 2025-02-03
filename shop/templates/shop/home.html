@@ -1,0 +1,28 @@
+<!-- shop/templates/shop/home.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home Page</title>
+</head>
+<body>
+    <h1>{{ message }}</h1>  <!-- Display the welcome message -->
+
+    <!-- Loop through products and display them -->
+    <div>
+        {% if products %}
+            {% for product in products %}
+                <div class="product">
+                    <h2>{{ product.name }}</h2>
+                    <p>{{ product.description }}</p>
+                    <p>${{ product.price }}</p>
+                    <img src="{{ product.image.url }}" alt="{{ product.name }}">
+                </div>
+            {% endfor %}
+        {% else %}
+            <p>No products available.</p>  <!-- If no products exist in the database -->
+        {% endif %}
+    </div>
+</body>
+</html>
